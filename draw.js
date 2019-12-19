@@ -5,13 +5,11 @@ const rows = canvas.height / scale;
 const columns = canvas.width / scale;
 
 let snake;
-let apple;
 
 function setup() {
     snake = new Snake();
-    snake.placeRandomApple();
+    snake.placeRandomApple()
     snake.draw();
-    
 };
 
 setup();

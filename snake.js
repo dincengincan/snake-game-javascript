@@ -8,6 +8,7 @@ class Snake {
         this.tailSize = 4;
         this.appleY = 5;
         this.appleX = 5;
+        this.changingDirection = false;
     }
 
     draw() {
@@ -20,8 +21,9 @@ class Snake {
         };*/
         
         
-        ctx.fillStyle = "cyan";
-        this.tail.forEach(function(t) {
+        const tail = this.tail.length;
+        this.tail.forEach(function(t,index) {
+            ctx.fillStyle =  index === tail - 1 ? "cyan": "darkcyan" ;
             ctx.fillRect(t.x, t.y , scale - 1, scale - 1);
         })
         
@@ -35,14 +37,11 @@ class Snake {
         ctx.font = "10px Verdana";
         ctx.fillText("made by E.CAN", 310, 390,)
 
-        
-
-        
-        
 
         ctx.fillStyle = "white"
         ctx.fillRect(this.appleX, this.appleY, scale - 1, scale - 1)
 
+        
     }
 
     update() {
@@ -67,13 +66,12 @@ class Snake {
 
         // GenerateRandomApple
         if(this.appleX === this.x && this.appleY === this.y) {
-            this.placeRandomApple();
             this.tailSize++;
-            
+            this.placeRandomApple()
         }
-        
-        this.tail.push({ x: this.x, y: this.y })
 
+
+        this.tail.push({ x: this.x, y: this.y })
 
         while (this.tail.length > this.tailSize) {
             this.tail.shift();
@@ -82,27 +80,28 @@ class Snake {
        let head = this.tail[this.tail.length - 1];
         for(let i = 0; i < this.tail.length - 1; i++) {
             if (head.x === this.tail[i].x && head.y === this.tail[i].y) {
-                
-                alert("You lost! Your score is: " + (this.tailSize - 4))
                 location.reload();
+                alert("LOST")
             }    
-        }   
-
-        console.log(this.tail);
+        }           
     }
-
 
     loop() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         snake.update();
         snake.draw();
-        
-        
+        this.changingDirection = false;
     }
 
-    
-
     onKeyPress(e) {
+        
+        //to prevent snake from reversing, disable onKeyPress event until updates function is called again after setInterval time.
+        //During setInterval time, direction must be changed only once. 
+        
+        if (this.changingDirection) return;
+        this.changingDirection = true;
+        
+        
         if(e.code === "ArrowLeft" && this.xSpeed != scale) {
             this.xSpeed = -scale;
             this.ySpeed = 0; 
@@ -127,6 +126,14 @@ class Snake {
     placeRandomApple() {
         this.appleX = (Math.floor(Math.random() * rows ))* scale;
         this.appleY = (Math.floor(Math.random() * columns ))* scale;
+        const  foodIsOnSnake = this.tail.some(part => {
+            return part.x === this.appleX && part.y === this.appleY;
+           })
+        console.log(foodIsOnSnake);
+        //if the new food and the snake have the same location, generate a new food location
+        if(foodIsOnSnake){
+            this.placeRandomApple();
+        }   
     }
  } 
 

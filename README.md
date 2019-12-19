@@ -6,7 +6,7 @@ Snake game built with Pure JS
 
 Use the app online at https://dincengincan.github.io/heads-or-tails-app/
 
-![headsortails GIF](demo/headsortails.gif) 
+![GIF](demo/headsortails.gif) 
 
 ## Technologies Used
 * JavaScript
