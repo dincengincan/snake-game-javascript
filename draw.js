@@ -15,7 +15,7 @@ function setup() {
 setup();
 
 //LOOP
-window.setInterval(function() {
+const loop = window.setInterval(function() {
     return snake.loop();        
 }, 50)
 

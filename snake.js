@@ -5,10 +5,11 @@ class Snake {
         this.xSpeed = 10;
         this.ySpeed = 0;
         this.tail =[];
-        this.tailSize = 4;
+        this.tailSize = 44;
         this.appleY = 5;
         this.appleX = 5;
         this.changingDirection = false;
+        this.death = false;
     }
 
     draw() {
@@ -23,23 +24,50 @@ class Snake {
         
         const tail = this.tail.length;
         this.tail.forEach(function(t,index) {
-            ctx.fillStyle =  index === tail - 1 ? "cyan": "darkcyan" ;
+            ctx.fillStyle =  index === tail - 1 ? "#F64668": "#984063" ;
             ctx.fillRect(t.x, t.y , scale - 1, scale - 1);
         })
         
         
         
-        ctx.fillStyle = "white";
-        ctx.font = "20px Verdana";
-        ctx.fillText(this.tailSize - 4, 15, 30,)
+        const resetButton = document.getElementById("resetButton");
+        //resetButton.style.visibility = this.death ? "visible" : "hidden"
+        resetButton.style.visibility = "hidden";
 
-        ctx.fillStyle = "grey";
-        ctx.font = "10px Verdana";
-        ctx.fillText("made by E.CAN", 310, 390,)
-
+        const score = document.getElementById("score");
+        score.innerHTML =  this.tailSize - 4
+        //score.style.visibility = this.death ? "hidden" : "visible"
 
         ctx.fillStyle = "white"
         ctx.fillRect(this.appleX, this.appleY, scale - 1, scale - 1)
+
+        /*
+        ctx.fillStyle = "white";
+        ctx.font = "20px Verdana";
+        ctx.fillText(this.tailSize - 4, 15, 30,)
+        */
+
+
+        //score display and change the appearance of the sneak when game is over
+        if(this.death){
+            const tail = this.tail.length
+            this.tail.forEach(function(t,index) {
+                ctx.fillStyle =  index === tail - 1 ? "gray": "black" ;
+                ctx.fillRect(t.x, t.y , scale - 1, scale - 1);
+            })
+            ctx.fillStyle = "#FE9677";
+            ctx.font = "40px Century Gothic";
+            ctx.fillText(`GAMEOVER !`, 80,180)
+            ctx.fillStyle = "#FE9677";
+            ctx.font = "20px Century Gothic";
+            ctx.fillText(`Score: ${this.tailSize - 4} `, 150,240);
+            score.remove();
+            resetButton.style.visibility = "visible"
+            
+            
+
+       }
+       
 
         
     }
@@ -80,8 +108,9 @@ class Snake {
        let head = this.tail[this.tail.length - 1];
         for(let i = 0; i < this.tail.length - 1; i++) {
             if (head.x === this.tail[i].x && head.y === this.tail[i].y) {
-                location.reload();
-                alert("LOST")
+                this.death = true;
+                clearInterval(loop);
+                
             }    
         }           
     }

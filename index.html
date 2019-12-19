@@ -4,28 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Snake</title>
-  
+    <title>Snake Game</title>
+    <style>
+        body{
+            background: #41436A;
+            font-family: 'Press Start 2P', cursive;
+            text-align: center
+        }
+
+        canvas{
+            display: block;
+            margin: 2% auto;
+            box-shadow: 1px 1px 30px 1px black;
+            border: 1px solid #FE9677;
+            background-color: #3e3e3e;
+        }
+
+        h1{
+            font-family: 'Franklin Gothic small', 'Arial Narrow', Arial, sans-serif ;
+            color: #FE9677;
+            font-weight: 10;
+            padding: 10px;
+            
+        }
+
+        h2{
+            font-family: century gothic;
+            color: #FE9677;
+            font-size: 50px;
+            font-weight: 10;
+            
+        }
+
+        button {
+            background-color: #984063;
+            color: white;
+            border: none;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 15px;
+            margin-top: 30px ;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 1px 1px 12px -2px black;
+            
+        }
+
+        button:hover {
+          background-color: #F64668;
+          color: white;
+        }
+
+    </style>
+
 </head>
 <body>
-    <h1 style="font-family: Century Gothic; color: rgb(3, 155, 155)"  >SNAKE GAME</h1>
-    <canvas id="game" width="400" height="400" style="background-color: #3e3e3e  "></canvas>
+    <h1>SNAKE</h1>
+    <canvas id="game" width="400" height="400" ></canvas>
+    <h2 id="score"></h2>
+    <button onclick=location.reload() id="resetButton" >Try Again</button>
     <script src="snake.js"></script>
     <script src="draw.js"></script>
-    <div>
-    <button style="padding: 20px 30px; 
-                    border-radius: 5px;
-                    color: white; 
-                    background-color:darkcyan ;
-                    font-size: 20px;
-                    font-family: Verdana;
-                    cursor: pointer;
-                    transition: 0.3s;
-                    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2),
-                     0 6px 20px 0 rgba(0,0,0,0.19);
-                    " 
-            onclick="location.reload()">RESET</button>
-            
-    </div>
 </body>
 </html>
