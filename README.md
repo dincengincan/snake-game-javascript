@@ -1,12 +1,12 @@
 # Snake Game
-Snake game built with Pure JS
+Snake game built with JS
 
 
 ## Demo
 
-Use the app online at https://dincengincan.github.io/heads-or-tails-app/
+Use the app online at https://dincengincan.github.io/snake-game-javascript/
 
-![GIF](demo/headsortails.gif) 
+![snake GIF](demo/snake.gif) 
 
 ## Technologies Used
 * JavaScript
@@ -18,7 +18,8 @@ Use the app online at https://dincengincan.github.io/heads-or-tails-app/
 
 To run the project locally:
 
-* Clone this repository `git clone https://github.com/dincengincan/heads-or-tails-app.git`
+* Clone this repository `git clone https://github.com/dincengincan/snake-game-javascript.git`
+* Open up the index.html file in your browser.
 
 
 

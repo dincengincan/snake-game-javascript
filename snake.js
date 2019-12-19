@@ -5,7 +5,7 @@ class Snake {
         this.xSpeed = 10;
         this.ySpeed = 0;
         this.tail =[];
-        this.tailSize = 44;
+        this.tailSize = 4;
         this.appleY = 5;
         this.appleX = 5;
         this.changingDirection = false;
