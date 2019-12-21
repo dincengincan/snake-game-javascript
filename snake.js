@@ -123,7 +123,6 @@ class Snake {
     }
 
     onKeyPress(e) {
-        
         //to prevent snake from reversing, disable onKeyPress event until updates function is called again after setInterval time.
         //During setInterval time, direction must be changed only once. 
         
@@ -131,25 +130,26 @@ class Snake {
         this.changingDirection = true;
         
         
-        if(e.code === "ArrowLeft" && this.xSpeed != scale) {
+        if((e.code === "ArrowLeft" || e.code === "KeyA") && this.xSpeed != scale) {
             this.xSpeed = -scale;
             this.ySpeed = 0; 
         }
 
-        if(e.code === "ArrowRight" && this.xSpeed != -scale) {
+        if((e.code === "ArrowRight" || e.code === "KeyD") && this.xSpeed != -scale) {
             this.xSpeed = scale;
             this.ySpeed = 0; 
         }
 
-        if(e.code === "ArrowUp" && this.ySpeed != scale) {
+        if((e.code === "ArrowUp" || e.code === "KeyW") &&  this.ySpeed != scale) {
             this.xSpeed = 0;
             this.ySpeed = -scale; 
         }
 
-        if(e.code === "ArrowDown" && this.ySpeed != -scale) {
+        if((e.code === "ArrowDown" || e.code === "KeyS") && this.ySpeed != -scale) {
             this.xSpeed = 0;
             this.ySpeed = scale; 
         }
+        
     }
     
     placeRandomApple() {

@@ -25,6 +25,8 @@
             font-family: 'Franklin Gothic small', 'Arial Narrow', Arial, sans-serif ;
             color: #FE9677;
             font-weight: 10;
+            margin: 10px;
+            
             
         }
 
@@ -35,7 +37,16 @@
             font-weight: 10;
             height:0;
             margin-bottom: 0;
-            padding:0
+            padding:0;
+            margin-top: 35px;
+        }
+        h3{
+            font-family: 'Franklin Gothic small', 'Arial Narrow', Arial, sans-serif ;
+            color: #FE9677;
+            font-weight: 1;
+            font-size: 15px;
+            margin-bottom: 20px;
+            margin-top: 10px
         }
 
         button {
@@ -62,6 +73,7 @@
 </head>
 <body>
     <h1>SNAKE</h1>
+    <h3>Use Arrow Keys or W,A,S,D to control the snake</h3>
     <canvas id="game" width="400" height="400" ></canvas>
     <h2 id="score"></h2>
     <button onclick=location.reload() id="resetButton" >Try Again</button>
